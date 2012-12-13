@@ -1,0 +1,1 @@
+metadoc 通过读取文件下的 meta.json 生成文档。

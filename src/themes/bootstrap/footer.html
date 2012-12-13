@@ -1,0 +1,19 @@
+<% var level = data.current.level,
+  linkPrefix = '';
+  for(var i=0; i< level; i++){
+    linkPrefix += '../';
+  }%>
+<!DOCTYPE html>
+    <footer class="footer">
+      <div class="container">
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>♥ Many thanks to <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap</a>.</p>
+      </div>
+    </footer>
+
+    <script src="<%= linkPrefix %>assets/js/jquery-1.8.1.min.js"></script>
+    <script src="<%= linkPrefix %>assets/js/bootstrap.min.js"></script>
+    <script src="<%= linkPrefix %>assets/js/prettify.js"></script>
+    <script src="<%= linkPrefix %>assets/js/docs.js"></script>
+  </body>
+<html>

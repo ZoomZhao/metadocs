@@ -1,0 +1,65 @@
+<% var root = data.root,
+  globe = data.globe,
+  current = data.current,
+  level = current.level,
+  linkPrefix = '';
+  for(var i=0; i< level; i++){
+    linkPrefix += '../';
+  }%>
+<div id="nav" class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      <div class="nav-collapse collapse">
+        <ul class="nav">
+          <% if(root.name.length > 0 && root.config.showOnNav) { %>
+            <li class="<% if(current.id === root.id) {%>active<% } %>">
+              <a href="<%= linkPrefix %>index.html"><%= root.name %></a>
+            </li>
+          <% } %>
+          <!-- TODO: 此处由代码根据一级目录元信息生成 -->
+          <% for(var i=0, l=root.childrenId.length; i< l; i++){ 
+            var level1 = globe[root.childrenId[i]];
+            if(level1.config.showOnNav) {
+            if(level1.childrenId.length > 0) { %>
+              <li class="<% if(level1.id === current.id) {%>active<% } %> dropdown">
+                <a href="<%= linkPrefix + level1.id %>/index.html" class="dropdown-toggle" data-toggle="dropdown">
+                  <%= level1.name %>
+                  <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                  <% for(var j=0, le=level1.childrenId.length; j< le; j++){ 
+                    var level2 = globe[level1.childrenId[j]];
+                    if(level2.config.showOnNav){%>
+                  <li><a href="<%= linkPrefix + level2.id %>/index.html"><%= level2.name %></a></li>
+                  <% }} %>
+                </ul>
+              </li>
+            <% } else {%>
+              <li class="<% if(level1.id === current.id) {%>active<% } %>">
+                <a href="<%= linkPrefix + level1.id %>/index.html"><%= level1.name %></a>
+              </li>
+            <% } %>
+          <% }} %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="breadcrumb" class="container">
+  <% if(level > 1) { var parent = globe[current.parentId]; %>
+  <ul class="breadcrumb">
+    <% if(parent.sections.length === 0 && parent.descriptions.length === 0){ %>
+      <li class="active"><%= parent.name %> <span class="divider">/</span></li>
+    <% } else {%>
+      <li><a href="<%= linkPrefix + parent.id %>/index.html"><%= parent.name %></a> <span class="divider">/</span></li>
+    <% } %>
+    <li class="active"><%= current.name %></li>
+  </ul>
+  <% } %>
+</div>

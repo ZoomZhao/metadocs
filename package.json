@@ -1,0 +1,18 @@
+{
+    "name": "metadocs",
+    "version": "0.1.0",
+    "description": "Generate Docs From Markdown Files",
+    "author": {
+      "name": "Zoom Zhao",
+      "email": "zoom.zhao@gmail.com"
+    },
+    "contributors": [
+    {
+      "name": "Hinc",
+      "email": "hincubus@gmail.com"
+    }],
+    "main": "index.js",
+    "dependencies": {
+        "ncp": ">= 0.2.6"
+    }
+}
