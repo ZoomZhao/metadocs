@@ -24,10 +24,18 @@
           <% } %>
           <!-- TODO: 此处由代码根据一级目录元信息生成 -->
           <% for(var i=0, l=root.childrenId.length; i< l; i++){ 
-            var level1 = globe[root.childrenId[i]];
+            var level1 = globe[root.childrenId[i]],
+              active = false;
+
+            if (level <= 1) {
+              if (level1.id === current.id) {active = true;}
+            }
+            if (level === 2) {
+              if (level1.id === globe[current.parentId].id) {active =true;}
+            }
             if(level1.config.showOnNav) {
             if(level1.childrenId.length > 0) { %>
-              <li class="<% if(level1.id === current.id) {%>active<% } %> dropdown">
+              <li class="<% if(active) {%>active<% } %> dropdown">
                 <a href="<%= linkPrefix + level1.id %>/index.html" class="dropdown-toggle" data-toggle="dropdown">
                   <%= level1.name %>
                   <b class="caret"></b>
@@ -41,7 +49,7 @@
                 </ul>
               </li>
             <% } else {%>
-              <li class="<% if(level1.id === current.id) {%>active<% } %>">
+              <li class="<% if(active) {%>active<% } %>">
                 <a href="<%= linkPrefix + level1.id %>/index.html"><%= level1.name %></a>
               </li>
             <% } %>
