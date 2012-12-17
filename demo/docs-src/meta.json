@@ -3,7 +3,7 @@
     "description": ["overview"],
     "order": [],
     "assets": [],
-    "childrenOrder": [],
+    "childrenOrder": ["site", "meta"],
     "sidebarOn": false,
     "showOnNav": true
 }

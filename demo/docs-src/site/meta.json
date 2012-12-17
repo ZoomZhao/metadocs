@@ -1,8 +1,9 @@
 {
-    "name": "",
-    "description": [],
+    "name": "Site 配置",
+    "description": ["site.json"],
     "order": [],
     "assets": [],
     "childrenOrder": [],
+    "sidebarOn": false,
     "showOnNav": true
 }

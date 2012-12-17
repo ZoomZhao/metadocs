@@ -1,0 +1,241 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Metadocs - Meta 配置</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="copyright" content="ZoomZhao">
+    
+    
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="../assets/css/prettify.css" rel="stylesheet">
+    <link href="../assets/css/docs.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="../assets/js/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body data-spy="scroll" data-target=".doc-sidebar">
+
+<div id="nav" class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      <div class="nav-collapse collapse">
+        <ul class="nav">
+          
+            <li class="">
+              <a href="../index.html">首页</a>
+            </li>
+          
+          <!-- TODO: 此处由代码根据一级目录元信息生成 -->
+          
+              <li class="">
+                <a href="../site/index.html">Site 配置</a>
+              </li>
+            
+          
+              <li class="active">
+                <a href="../meta/index.html">Meta 配置</a>
+              </li>
+            
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="breadcrumb" class="container">
+  
+</div>
+
+<div class="container">
+  <div class="row">
+    
+      <div class="span3 doc-sidebar">
+        <ul class="nav nav-list doc-sidenav affix">
+          
+          <li class="active" >
+            <a href="#name">
+              <i class="icon-chevron-right"></i>
+              名称 (name)
+            </a>
+          </li>
+          
+          <li >
+            <a href="#description">
+              <i class="icon-chevron-right"></i>
+              描述 (description)
+            </a>
+          </li>
+          
+          <li >
+            <a href="#assets">
+              <i class="icon-chevron-right"></i>
+              静态文件夹 (assets)
+            </a>
+          </li>
+          
+          <li >
+            <a href="#order">
+              <i class="icon-chevron-right"></i>
+              顺序 (order)
+            </a>
+          </li>
+          
+          <li >
+            <a href="#childrenOrder">
+              <i class="icon-chevron-right"></i>
+              子节点顺序 (childrenOrder)
+            </a>
+          </li>
+          
+          <li >
+            <a href="#sidebarOn">
+              <i class="icon-chevron-right"></i>
+              是否打开边栏 (sidebarOn)
+            </a>
+          </li>
+          
+          <li >
+            <a href="#showOnNav">
+              <i class="icon-chevron-right"></i>
+              是否在导航显示 (showOnNav)
+            </a>
+          </li>
+          
+        </ul>
+      </div>
+      <div class="span9">
+    
+    
+      <section>
+        <h1>Meta 配置</h1>
+
+<hr />
+
+<p>Meta 配置通过位于文档系统 src 下每个文件夹下名称为 <code>meta.json</code> 的文件实现，建议每个文件夹下都包含此配置。Meta 配置信息用来决定展现的文档内容以及展示顺序, <code>meta.json</code> 默认取值如下：</p>
+
+<div class="highlight"><pre lang="" class="prettyprint linenums">{
+    "name": "",
+    "description": [],
+    "order": [],
+    "assets": [],
+    "childrenOrder": [],
+    "showOnNav": true
+}
+</pre></div>
+
+<p>Metadocs 在生成过程中会解析 <code>meta.json</code> 中的内容并根据 Markdown 文件传入 globe、root 以及 current 对象到模版中。</p>
+      </section>
+    
+    
+      <section id="name">
+        <div class="page-header">
+          <h1>名称 (name)</h1>
+        </div>
+        <p>当前文档页面的名称。<br />不建议为空，如果未设置或者为空，则取默认值为文件夹名称。<br />传入模版的页面对象中的 <code>name</code> 属性为字符串。<br />在默认模版中，<code>name</code> 决定了页面 title 的名称以及导航中的名称。</p>
+      </section>
+    
+      <section id="description">
+        <div class="page-header">
+          <h1>描述 (description)</h1>
+        </div>
+        <p>用于描述此页面的内容，取值为目录下 Markdown 文件名（可以不包含文件后缀）的列表。<br />传入模版的页面对象中的 <code>description</code> 属性如下：</p>
+
+<div class="highlight"><pre lang="" class="prettyprint linenums">{
+    ...,
+    description: [{
+        file: '',    // 文件绝对地址
+        data: ''     // 文件内容转换为 HTML 之后的内容
+    }],
+    ...
+}
+</pre></div>
+
+<p>在默认模版中，<code>description</code> 中文件的内容会在页面的最上方显示。</p>
+      </section>
+    
+      <section id="assets">
+        <div class="page-header">
+          <h1>静态文件夹 (assets)</h1>
+        </div>
+        <p><code>meta.json</code> 同目录下的文件夹列表组成的配置项。<br />列表中的所有文件夹将不再会被解析，在生成文档过程中直接拷贝到同 src 目录结构相同的 dest 目录下。</p>
+      </section>
+    
+      <section id="order">
+        <div class="page-header">
+          <h1>顺序 (order)</h1>
+        </div>
+        <p>当前页面包含的所有 Section 的排列顺序。<br /><code>order</code> 取值为目录下 Markdown 文件名（可以不包含文件后缀）的列表。<br />传入模版的页面对象中的 <code>sections</code> 属性如下：</p>
+
+<div class="highlight"><pre lang="" class="prettyprint linenums">{
+    ...,
+    sections: [{
+        id: '',              // 文件名去除后缀的部分
+        fileName: '',        // 文件名
+        name: '',            // section 名称
+        data: ''             // section 内容转化为 HTML 的结果
+    }],
+    ...
+}
+</pre></div>
+
+<p>其中 Section 获取时根据 <a href="http://en.wikipedia.org/wiki/Markdown#Headings">Markdown Headings</a> 获取文件中第一个一级标题内容作为 Section 名称，剩余内容作为 Section 内容。<br />在默认模版中，<code>sections</code> 中文件的内容会在页面中 <code>descriptions</code> 内容之后按顺序显示。</p>
+      </section>
+    
+      <section id="childrenOrder">
+        <div class="page-header">
+          <h1>子节点顺序 (childrenOrder)</h1>
+        </div>
+        <p><code>meta.json</code> 同目录下的文件夹列表组成的配置项。<br />此配置用来决定下一级别节点的顺序，不在此配置项中的非静态文件夹会按照默认顺序（字母顺序）排列。<br />传入模版的页面对象中的 <code>childrenId</code> 属性如下：</p>
+
+<div class="highlight"><pre lang="" class="prettyprint linenums">{
+    ...,
+    childrenId: ['', ''],   // 列表中为文件夹名称
+    ...
+}
+</pre></div>
+      </section>
+    
+      <section id="sidebarOn">
+        <div class="page-header">
+          <h1>是否打开边栏 (sidebarOn)</h1>
+        </div>
+        <p>此配置为默认 Theme 配置，取值为 <code>true</code> 则打开边栏，否则不显示。</p>
+      </section>
+    
+      <section id="showOnNav">
+        <div class="page-header">
+          <h1>是否在导航显示 (showOnNav)</h1>
+        </div>
+        <p>默认为 <code>true</code>，如果设置为 <code>false</code>，则默认不在导航显示此页面的链接，只能通过页面内 <code>hardcode</code> 的链接跳转到此页面。<br />用于满足不希望在导航中直接显示页面的需求。</p>
+      </section>
+    
+    </div>
+  </div>
+</div>
+
+<!DOCTYPE html>
+    <footer class="footer">
+      <div class="container">
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>&copy; ZoomZhao with help from <a href="https://github.com/ZoomZhao/metadocs">Metadocs</a> and <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap</a>.</p>
+      </div>
+    </footer>
+
+    <script src="../assets/js/jquery-1.8.1.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/prettify.js"></script>
+    <script src="../assets/js/docs.js"></script>
+  </body>
+<html>

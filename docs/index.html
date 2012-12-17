@@ -6,7 +6,7 @@
     <title>Metadocs - 首页</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    
+    <meta name="copyright" content="ZoomZhao">
     
     
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
@@ -39,6 +39,16 @@
           
           <!-- TODO: 此处由代码根据一级目录元信息生成 -->
           
+              <li class="">
+                <a href="site/index.html">Site 配置</a>
+              </li>
+            
+          
+              <li class="">
+                <a href="meta/index.html">Meta 配置</a>
+              </li>
+            
+          
         </ul>
       </div>
     </div>
@@ -57,7 +67,31 @@
       <section>
         <h1>Metadocs</h1>
 
-<p>Metadocs 是一个根据目录下的 <code>meta.json</code> 文件以及 Markdown 文件生成文档的工具。通过 Metadocs 可以轻松的通过编写 Markdown 文件的方式编写项目的文档。</p>
+<hr />
+
+<p>Metadocs 是一个基于 <a href="http://nodejs.org/">Nodejs</a> 根据目录下的 <code>meta.json</code> 文件以及 Markdown 文件生成文档的工具。<br />通过 Metadocs 可以通过编写 Markdown 文件轻松的生成项目文档。<br />Metadocs 的 Markdown 文件解析基于 <a href="https://github.com/github/github-flavored-markdown">github-flavored-markdown</a> 进行了部分改造，增加了 <a href="http://michelf.ca/projects/php-markdown/extra/#table">Table</a> 功能来满足生成表格的需求。</p>
+
+<h2>使用</h2>
+
+<p>使用 Metadocs 需要安装 Nodejs 环境，安装完成后通过以下步骤生成文档：<br />1. 通过 <code>npm install metados</code> 安装 <code>Metadocs</code><br />2. 在自己的代码中通过以下方式调用 <code>Metadocs</code> ：</p>
+
+<div class="highlight"><pre lang="" class="prettyprint linenums">var Metadocs = require('metadocs');
+
+new Metadocs({
+    src: './src/docs',    // 用来生成文档的根目录, 默认值为 `../src/docs`
+    dest: './docs',       // 生成文档到的位置，默认值为 `../docs`
+    theme: 'bootstrap'    // 主题，暂时只有 `bootstrap`，默认为 `bootstrap`
+}).gen();
+</pre></div>
+
+<h2>目录结构</h2>
+
+<p>Metadocs 理论上不限制目录层数，但是默认主题只支持根目录下包含二层目录。</p>
+
+<ul>
+<li>根目录下可以包含 <code>site.json</code> 文件来进行 <a href="site/index.html">Site 配置</a>。</li>
+<li>每层目录下都建议放置 <code>meta.json</code> 文件进行 <a href="meta/index.html">Meta 配置</a>，从而按照你的意愿生成文档。</li>
+</ul>
       </section>
     
     
@@ -69,7 +103,7 @@
     <footer class="footer">
       <div class="container">
         <p class="pull-right"><a href="#">Back to top</a></p>
-        <p>♥ Many thanks to <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap</a>.</p>
+        <p>&copy; ZoomZhao with help from <a href="https://github.com/ZoomZhao/metadocs">Metadocs</a> and <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap</a>.</p>
       </div>
     </footer>
 

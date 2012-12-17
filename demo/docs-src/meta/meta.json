@@ -1,0 +1,17 @@
+{
+    "name": "Meta 配置",
+    "description": ["meta.json"],
+    "order": [
+        "name",
+        "description",
+        "assets",
+        "order",
+        "childrenOrder",
+        "sidebarOn",
+        "showOnNav"
+        ],
+    "assets": [],
+    "childrenOrder": [],
+    "sidebarOn": true,
+    "showOnNav": true
+}

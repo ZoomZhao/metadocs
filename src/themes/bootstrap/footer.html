@@ -1,5 +1,6 @@
 <% var level = data.current.level,
-  linkPrefix = '';
+  linkPrefix = '',
+  site = data.site;
   for(var i=0; i< level; i++){
     linkPrefix += '../';
   }%>
@@ -7,7 +8,7 @@
     <footer class="footer">
       <div class="container">
         <p class="pull-right"><a href="#">Back to top</a></p>
-        <p>♥ Many thanks to <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap</a>.</p>
+        <p><% if(site.copyright){ %>&copy; <%= site.copyright %> <% } %>with help from <a href="https://github.com/ZoomZhao/metadocs">Metadocs</a> and <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap</a>.</p>
       </div>
     </footer>
 
