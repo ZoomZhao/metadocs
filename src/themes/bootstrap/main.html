@@ -1,7 +1,14 @@
-<% var current = data.current, config = data.current.config; %>
+<% 
+var current = data.current,
+    config = data.current.config,
+    sidebarOn;
+    if (sidebarOn !== true && sidebarOn !== false) {
+      sidebarOn = current.childrenId.length > 0 ? true : false;
+    }
+%>
 <div class="container">
   <div class="row">
-    <% if (config.sidebarOn && current.sections.length > 0) { %>
+    <% if (sidebarOn && current.sections.length > 0) { %>
       <div class="span3 doc-sidebar">
         <ul class="nav nav-list doc-sidenav affix">
           <% for (var i = 0, l = current.sections.length; i < l; i++) {

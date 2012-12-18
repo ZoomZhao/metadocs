@@ -27,4 +27,35 @@ new Metadocs({
 Metadocs 理论上不限制目录层数，但是默认主题只支持根目录下包含二层目录。
 
 - 根目录下可以包含 `site.json` 文件来进行 [Site 配置](site/index.html)。
-- 每层目录下都建议放置 `meta.json` 文件进行 [Meta 配置](meta/index.html)，从而按照你的意愿生成文档。
+- 每层目录下都建议放置 `meta.json` 文件进行 [Meta 配置](meta/index.html)，从而按照你的意愿生成文档。  
+目录结构示例如下：
+
+<table class="table table-striped table-condensed">
+  <tr>
+    <td><i class="icon-folder-close"></i> system1
+  </tr>
+  <tr>
+    <td><i class="icon-folder-close"></i> system2
+  </tr>
+  <tr>
+    <td><i class="icon-folder-open"></i> system3
+  </tr>
+  <tr>
+    <td style="padding-left: 25px;"><i class="icon-folder-close"></i> system3-module1
+  </tr>
+  <tr>
+    <td style="padding-left: 25px;"><i class="icon-folder-close"></i> system3-module2
+  </tr>
+  <tr>
+    <td style="padding-left: 25px;"> <i class="icon-file"></i> meta.json
+  </tr>
+  <tr>
+    <td><i class="icon-file"></i> index.md
+  </tr>
+  <tr>
+    <td><i class="icon-file"></i> meta.json
+  </tr>
+  <tr>
+    <td><i class="icon-file"></i> site.json
+  </tr>
+</table>
