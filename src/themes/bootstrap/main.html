@@ -1,9 +1,9 @@
 <% 
 var current = data.current,
     config = data.current.config,
-    sidebarOn;
+    sidebarOn = config.sidebarOn;
     if (sidebarOn !== true && sidebarOn !== false) {
-      sidebarOn = current.childrenId.length > 0 ? true : false;
+      sidebarOn = current.sections.length > 0 ? true : false;
     }
 %>
 <div class="container">

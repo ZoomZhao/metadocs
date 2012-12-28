@@ -62,7 +62,7 @@
 <div id="breadcrumb" class="container">
   <% if(level > 1) { var parent = globe[current.parentId]; %>
   <ul class="breadcrumb">
-    <% if(parent.sections.length === 0 && parent.descriptions.length === 0){ %>
+    <% if(parent.sections.length === 0 && parent.description.length === 0){ %>
       <li class="active"><%= parent.name %> <span class="divider">/</span></li>
     <% } else {%>
       <li><a href="<%= linkPrefix + parent.id %>/index.html"><%= parent.name %></a> <span class="divider">/</span></li>
